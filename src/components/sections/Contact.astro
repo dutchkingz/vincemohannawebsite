@@ -1,0 +1,180 @@
+---
+// src/components/sections/Contact.astro
+---
+
+<section id="contact">
+  <div class="container">
+    <h2 class="section-heading" data-i18n="contact.heading">Contact Me</h2>
+    <form id="contact-form" class="contact-form" novalidate>
+      <div class="form-group">
+        <label for="name" data-i18n="contact.name_label">Name</label>
+        <!-- data-i18n on inputs: applyLanguage() swaps .placeholder for input/textarea elements -->
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          autocomplete="name"
+          data-i18n="contact.name_placeholder"
+          placeholder="Your full name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email" data-i18n="contact.email_label">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          autocomplete="email"
+          data-i18n="contact.email_placeholder"
+          placeholder="your@email.com"
+        />
+      </div>
+      <div class="form-group">
+        <label for="message" data-i18n="contact.message_label">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          data-i18n="contact.message_placeholder"
+          placeholder="How can I help you?"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+        <span id="submit-label" data-i18n="contact.submit">Send Message</span>
+      </button>
+      <p id="form-status" class="form-status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Note: input placeholder swapping is handled automatically by applyLanguage()
+  // in i18n-client.ts via [data-i18n] on input/textarea elements — no custom
+  // placeholder logic needed here.
+  import { getCurrentLang } from '../../scripts/i18n-client';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const submitLabel = document.getElementById('submit-label')!;
+  const statusEl = document.getElementById('form-status')!;
+
+  function getI18nText(key: string): string {
+    const lang = getCurrentLang();
+    const i18n = (window as Record<string, unknown>).__i18n as
+      Record<string, Record<string, Record<string, string>>> | undefined;
+    if (!i18n) return key;
+    const [section, field] = key.split('.');
+    return i18n[lang]?.[section]?.[field] ?? key;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusEl.textContent = '';
+    statusEl.className = 'form-status';
+
+    const name = (form.elements.namedItem('name') as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value.trim();
+
+    if (!name || !email || !message) return;
+
+    submitBtn.disabled = true;
+    submitLabel.textContent = getI18nText('contact.sending');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        statusEl.textContent = getI18nText('contact.success');
+        statusEl.classList.add('success');
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Unknown error');
+      }
+    } catch {
+      statusEl.textContent = getI18nText('contact.error');
+      statusEl.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitLabel.textContent = getI18nText('contact.submit');
+    }
+  });
+</script>
+
+<style>
+  .contact-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  input,
+  textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background-color: var(--color-bg-card);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-secondary);
+    opacity: 0.7;
+  }
+
+  .submit-btn {
+    align-self: flex-start;
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .form-status {
+    font-size: 0.95rem;
+    min-height: 1.5rem;
+  }
+
+  .form-status.success {
+    color: #22c55e;
+  }
+
+  .form-status.error {
+    color: #ef4444;
+  }
+</style>
