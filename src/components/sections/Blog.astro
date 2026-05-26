@@ -32,10 +32,10 @@ function formatDate(date: Date): string {
               ))}
             </div>
             <h3 class="blog-title">
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              <a href={`/blog/${post.id.replace(/\.md$/, '')}`}>{post.data.title}</a>
             </h3>
             <p class="blog-desc">{post.data.description}</p>
-            <a href={`/blog/${post.slug}`} class="read-more">
+            <a href={`/blog/${post.id.replace(/\.md$/, '')}`} class="read-more">
               <span data-i18n="blog.read_more">Read more</span> →
             </a>
           </li>
