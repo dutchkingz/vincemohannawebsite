@@ -1,0 +1,41 @@
+/* src/styles/themes.css */
+/* Light theme (default) */
+:root,
+[data-theme='light'] {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f7fa;
+  --color-bg-card: #ffffff;
+  --color-text-primary: #1a2332;
+  --color-text-secondary: #4a5568;
+  --color-nav-bg: #1b2a4a;
+  --color-nav-text: #ffffff;
+  --color-accent: #c9a84c;
+  --color-accent-hover: #b8963f;
+  --color-border: #e2e8f0;
+  --color-btn-bg: #1b2a4a;
+  --color-btn-text: #ffffff;
+  --color-btn-hover: #253d6e;
+  --color-timeline-line: #e2e8f0;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --color-bg: #0f1923;
+  --color-bg-secondary: #1a2535;
+  --color-bg-card: #1a2535;
+  --color-text-primary: #e8edf3;
+  --color-text-secondary: #a0aec0;
+  --color-nav-bg: #0a1520;
+  --color-nav-text: #ffffff;
+  --color-accent: #d4af5a;
+  --color-accent-hover: #e0c070;
+  --color-border: #2d3748;
+  --color-btn-bg: #2d4070;
+  --color-btn-text: #ffffff;
+  --color-btn-hover: #3a5090;
+  --color-timeline-line: #2d3748;
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
