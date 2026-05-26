@@ -1,0 +1,35 @@
+---
+// src/components/sections/About.astro
+---
+
+<section id="about">
+  <div class="container">
+    <h2 class="section-heading" data-i18n="about.heading">About Me</h2>
+    <div class="about-body">
+      <p data-i18n="about.bio_1">
+        Replace this paragraph with your actual bio. Tell your story — your
+        background, what you specialize in, and the kind of problems you love
+        solving.
+      </p>
+      <p data-i18n="about.bio_2">
+        A second paragraph about your experience, values, or what makes you
+        unique professionally.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-body {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .about-body p {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+</style>

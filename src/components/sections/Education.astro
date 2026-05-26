@@ -1,0 +1,100 @@
+---
+// src/components/sections/Education.astro
+import { institutions } from '../../data/education';
+---
+
+<section id="education">
+  <div class="container">
+    <h2 class="section-heading" data-i18n="education.heading">Education</h2>
+    <ul class="edu-list" role="list">
+      {
+        institutions.map((inst) => (
+          <li class="edu-card">
+            <div class="edu-logo-wrap">
+              <img src={inst.logo} alt={inst.logoAlt} class="edu-logo" />
+            </div>
+            <div class="edu-info">
+              <h3 class="edu-name">{inst.name}</h3>
+              <p class="edu-degree">
+                {inst.degree} · {inst.field}
+              </p>
+              <p class="edu-years">{inst.years}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .edu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.2s;
+  }
+
+  .edu-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .edu-logo-wrap {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edu-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .edu-info {
+    flex: 1;
+  }
+
+  .edu-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-text-primary);
+  }
+
+  .edu-degree {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-years {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .edu-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+</style>

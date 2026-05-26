@@ -1,0 +1,105 @@
+---
+// src/components/sections/Hero.astro
+---
+
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <p class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</p>
+    <h1 class="hero-name">Vince Mohanna</h1>
+    <p class="hero-title" data-i18n="hero.title">Your Professional Title Here</p>
+    <p class="hero-tagline" data-i18n="hero.tagline">
+      A brief, compelling tagline about your expertise and what drives you.
+    </p>
+    <div class="hero-cta">
+      <a href="/documents/cvApr2026_tech.pdf" download class="btn btn-primary">
+        <span data-i18n="hero.cta_cv">View CV</span>
+        ↓
+      </a>
+      <a href="#contact" class="btn btn-outline">
+        <span data-i18n="hero.cta_contact">Contact Me</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(
+      135deg,
+      var(--color-nav-bg) 0%,
+      #253d6e 60%,
+      #1a3060 100%
+    );
+    color: #fff;
+    padding: 8rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(201, 168, 76, 0.12) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-greeting {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .hero-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-tagline {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+
+  .btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: #fff;
+    color: #fff;
+  }
+</style>
