@@ -1,0 +1,52 @@
+---
+// src/components/LanguageToggle.astro
+---
+
+<button id="lang-toggle" aria-label="Switch language / Changer de langue" title="EN / FR">
+  <span id="lang-label">EN</span>
+  <span>🌐</span>
+</button>
+
+<script>
+  import { applyLanguage, getCurrentLang } from '../scripts/i18n-client';
+
+  const btn = document.getElementById('lang-toggle')!;
+  const label = document.getElementById('lang-label')!;
+
+  // Sync label with stored preference
+  let lang = getCurrentLang();
+  label.textContent = lang.toUpperCase();
+
+  // If stored lang is French, apply it now (page rendered in English)
+  if (lang === 'fr') {
+    applyLanguage('fr');
+  }
+
+  btn.addEventListener('click', () => {
+    lang = lang === 'en' ? 'fr' : 'en';
+    applyLanguage(lang);
+    label.textContent = lang.toUpperCase();
+  });
+</script>
+
+<style>
+  button {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--color-nav-text);
+    padding: 0 0.75rem;
+    height: 2.25rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: background-color 0.2s;
+    letter-spacing: 0.05em;
+  }
+  button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+</style>

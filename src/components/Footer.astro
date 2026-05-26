@@ -1,0 +1,63 @@
+---
+// src/components/Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container footer-inner">
+    <p>
+      © {year} Vince Mohanna —
+      <span data-i18n="footer.rights">All rights reserved.</span>
+    </p>
+    <div class="footer-links">
+      <!-- TODO: Replace # with your actual LinkedIn and GitHub URLs -->
+      <a
+        href="https://linkedin.com/in/your-profile"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        LinkedIn
+      </a>
+      <a
+        href="https://github.com/your-username"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        GitHub
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--color-nav-bg);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 1.75rem 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
+</style>
