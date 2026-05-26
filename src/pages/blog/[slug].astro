@@ -1,0 +1,163 @@
+---
+// src/pages/blog/[slug].astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavBar from '../../components/NavBar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-CA', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout title={`${post.data.title} — Vince Mohanna`} description={post.data.description}>
+  <NavBar />
+  <main>
+    <article class="post-wrapper">
+      <div class="container">
+        <header class="post-header">
+          <div class="post-meta">
+            <time datetime={post.data.pubDate.toISOString()}>
+              {formatDate(post.data.pubDate)}
+            </time>
+            {
+              post.data.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))
+            }
+          </div>
+          <h1>{post.data.title}</h1>
+          <p class="post-description">{post.data.description}</p>
+        </header>
+        <div class="post-body">
+          <Content />
+        </div>
+        <div class="post-footer">
+          <a href="/blog" class="btn btn-outline">← All posts</a>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .post-wrapper {
+    padding: 4rem 0 5rem;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .post-meta time {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  .tag {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 99px;
+  }
+
+  .post-header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .post-description {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .post-body :global(h2) {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1rem;
+    color: var(--color-text-primary);
+  }
+
+  .post-body :global(h3) {
+    font-size: 1.25rem;
+    margin: 2rem 0 0.75rem;
+    color: var(--color-text-primary);
+  }
+
+  .post-body :global(p) {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    max-width: 680px;
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-text-secondary);
+  }
+
+  .post-body :global(li) {
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .post-body :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .post-body :global(code) {
+    background-color: var(--color-bg-secondary);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .post-body :global(pre) {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+</style>
