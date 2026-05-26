@@ -1,0 +1,43 @@
+---
+// src/components/sections/CV.astro
+---
+
+<section id="cv">
+  <div class="container cv-inner">
+    <h2 class="section-heading" data-i18n="cv.heading">Curriculum Vitae</h2>
+    <p class="cv-description" data-i18n="cv.description">
+      Download my full CV for a detailed overview of my professional background,
+      academic credentials, and qualifications.
+    </p>
+    <a
+      href="/documents/cvApr2026_tech.pdf"
+      download="Vince_Mohanna_CV.pdf"
+      class="btn btn-primary cv-btn"
+    >
+      <span data-i18n="cv.download">Download CV</span>
+      ↓
+    </a>
+  </div>
+</section>
+
+<style>
+  .cv-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .cv-description {
+    max-width: 520px;
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .cv-btn {
+    font-size: 1.05rem;
+    padding: 0.9rem 2.25rem;
+  }
+</style>
