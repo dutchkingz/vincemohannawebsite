@@ -23,6 +23,7 @@ export const fr: Translations = {
     heading: 'À propos de moi',
     bio_1: 'Remplacez ce paragraphe par votre biographie réelle. Racontez votre parcours — votre background, votre spécialité, et le type de problèmes que vous aimez résoudre.',
     bio_2: 'Un deuxième paragraphe sur votre expérience, vos valeurs ou ce qui vous distingue professionnellement.',
+    bio_3: "",
   },
   education: {
     heading: 'Formation',

@@ -1,20 +1,23 @@
 ---
 // src/components/sections/About.astro
+import { en } from '../../i18n/en';
 ---
 
 <section id="about">
   <div class="container">
-    <h2 class="section-heading" data-i18n="about.heading">About Me</h2>
+    <h2 class="section-heading" data-i18n="about.heading">{en.about.heading}</h2>
     <div class="about-body">
       <p data-i18n="about.bio_1">
-        Replace this paragraph with your actual bio. Tell your story — your
-        background, what you specialize in, and the kind of problems you love
-        solving.
+        {en.about.bio_1}
       </p>
       <p data-i18n="about.bio_2">
-        A second paragraph about your experience, values, or what makes you
-        unique professionally.
+        {en.about.bio_2}
       </p>
+      {en.about.bio_3 && (
+        <p data-i18n="about.bio_3">
+          {en.about.bio_3}
+        </p>
+      )}
     </div>
   </div>
 </section>

@@ -1,14 +1,15 @@
 ---
 // src/components/sections/Hero.astro
+import { en } from '../../i18n/en';
 ---
 
 <section class="hero" id="home">
   <div class="container hero-content">
-    <p class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</p>
-    <h1 class="hero-name">Vince Mohanna</h1>
-    <p class="hero-title" data-i18n="hero.title">Your Professional Title Here</p>
+    <p class="hero-greeting" data-i18n="hero.greeting">{en.hero.greeting}</p>
+    <h1 class="hero-name">{en.hero.name}</h1>
+    <p class="hero-title" data-i18n="hero.title">{en.hero.title}</p>
     <p class="hero-tagline" data-i18n="hero.tagline">
-      A brief, compelling tagline about your expertise and what drives you.
+      {en.hero.tagline}
     </p>
     <div class="hero-cta">
       <a href="/documents/cvApr2026_tech.pdf" download class="btn btn-primary">

@@ -1,6 +1,6 @@
 // src/pages/api/contact.ts
 import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 // Exported so it can be unit tested independently of Astro
 export interface ContactPayload {
@@ -52,44 +52,37 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const {
-    SMTP_HOST,
-    SMTP_PORT,
-    SMTP_USER,
-    SMTP_PASS,
-    CONTACT_TO_EMAIL,
-  } = import.meta.env;
+  const { RESEND_API_KEY, CONTACT_TO_EMAIL } = import.meta.env;
 
-  if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !CONTACT_TO_EMAIL) {
-    console.error('SMTP environment variables are not configured');
+  if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) {
+    console.error('RESEND_API_KEY or CONTACT_TO_EMAIL is not configured');
     return new Response(
       JSON.stringify({ success: false, message: 'Server configuration error' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } },
     );
   }
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: Number(SMTP_PORT) === 465,
-    auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASS,
-    },
-  });
+  const resend = new Resend(RESEND_API_KEY);
 
-  await transporter.sendMail({
-    from: `"${payload.name.trim()}" <${SMTP_USER}>`,
-    replyTo: payload.email.trim(),
+  const { error } = await resend.emails.send({
+    from: 'Contact Form <onboarding@resend.dev>',
+    replyTo: `${payload.name.trim()} <${payload.email.trim()}>`,
     to: CONTACT_TO_EMAIL,
     subject: `New contact message from ${payload.name.trim()}`,
-    text: `From: ${payload.name.trim()} <${payload.email.trim()}>\n\n${payload.message.trim()}`,
     html: `
       <p><strong>From:</strong> ${payload.name.trim()} &lt;${payload.email.trim()}&gt;</p>
       <p><strong>Message:</strong></p>
       <p>${payload.message.trim().replace(/\n/g, '<br>')}</p>
     `,
   });
+
+  if (error) {
+    console.error('Resend error:', error);
+    return new Response(
+      JSON.stringify({ success: false, message: 'Failed to send email' }),
+      { status: 500, headers: { 'Content-Type': 'application/json' } },
+    );
+  }
 
   return new Response(
     JSON.stringify({ success: true }),

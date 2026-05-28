@@ -1,6 +1,12 @@
 ---
 // src/components/sections/Education.astro
 import { institutions } from '../../data/education';
+
+const sorted = [...institutions].sort((a, b) => {
+  const yearA = parseInt(a.years.slice(0, 4), 10);
+  const yearB = parseInt(b.years.slice(0, 4), 10);
+  return yearA - yearB;
+});
 ---
 
 <section id="education">
@@ -8,7 +14,7 @@ import { institutions } from '../../data/education';
     <h2 class="section-heading" data-i18n="education.heading">Education</h2>
     <ul class="edu-list" role="list">
       {
-        institutions.map((inst) => (
+        sorted.map((inst) => (
           <li class="edu-card">
             <div class="edu-logo-wrap">
               <img src={inst.logo} alt={inst.logoAlt} class="edu-logo" />
@@ -20,6 +26,11 @@ import { institutions } from '../../data/education';
               </p>
               <p class="edu-years">{inst.years}</p>
             </div>
+            {inst.badge && (
+              <div class="edu-badge-wrap">
+                <img src={inst.badge} alt={inst.badgeAlt ?? inst.name} class="edu-badge" />
+              </div>
+            )}
           </li>
         ))
       }
@@ -88,6 +99,22 @@ import { institutions } from '../../data/education';
     font-size: 0.875rem;
     color: var(--color-accent);
     font-weight: 500;
+  }
+
+  .edu-badge-wrap {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edu-badge {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 6px;
   }
 
   @media (max-width: 600px) {
