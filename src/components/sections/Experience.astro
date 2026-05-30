@@ -29,7 +29,9 @@ import { roles } from '../../data/experience';
                   <span class="timeline-location">{role.location}</span>
                 </div>
               </div>
-              <p class="timeline-desc">{role.description}</p>
+              <ul class="timeline-bullets">
+                {role.bullets.map((b) => <li>{b}</li>)}
+              </ul>
             </div>
           </li>
         ))
@@ -123,10 +125,20 @@ import { roles } from '../../data/experience';
     color: var(--color-text-secondary);
   }
 
-  .timeline-desc {
+  .timeline-bullets {
     font-size: 0.95rem;
     color: var(--color-text-secondary);
     line-height: 1.7;
+    padding-left: 1.25rem;
+    margin: 0;
+  }
+
+  .timeline-bullets li {
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline-bullets li:last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 600px) {
