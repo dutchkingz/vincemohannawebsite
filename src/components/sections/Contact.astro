@@ -86,7 +86,7 @@ import { en } from '../../i18n/en';
     submitLabel.textContent = getI18nText('contact.sending');
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://2oe5kw2wglvuc4bo34ey3ty36m0sitpa.lambda-url.us-east-2.on.aws/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
