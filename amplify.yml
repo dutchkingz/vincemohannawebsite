@@ -11,8 +11,8 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    # The node adapter outputs a standalone server in dist/
-    baseDirectory: dist
+    # The node adapter outputs static files to dist/client/
+    baseDirectory: dist/client
     files:
       - '**/*'
   cache:
