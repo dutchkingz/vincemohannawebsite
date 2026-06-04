@@ -1,0 +1,200 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NavBar from '../../components/NavBar.astro';
+import Footer from '../../components/Footer.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects
+    .filter((p) => p.slug)
+    .map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const project = projects.find((p) => p.slug === slug)!;
+---
+
+<BaseLayout title={`${project.title} — Vince Mohanna`}>
+  <NavBar />
+  <main class="project-page">
+    <div class="container">
+
+      <a href="/#projects" class="back-link">← Back to Projects</a>
+
+      <header class="project-header">
+        <h1 class="project-title">{project.title}</h1>
+        {project.categories && (
+          <ul class="category-list">
+            {project.categories.map((c) => <li class="category-tag">{c}</li>)}
+          </ul>
+        )}
+      </header>
+
+      {project.image && (
+        <div class="project-hero-image">
+          <img src={project.image} alt={project.imageAlt ?? project.title} />
+        </div>
+      )}
+
+      {project.overview && (
+        <section class="project-section">
+          <h2>Overview</h2>
+          <p>{project.overview}</p>
+        </section>
+      )}
+
+      {project.features && project.features.length > 0 && (
+        <section class="project-section">
+          <h2>Key Features</h2>
+          <ul class="feature-list">
+            {project.features.map((f) => <li>{f}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {project.techStack && project.techStack.length > 0 && (
+        <section class="project-section">
+          <h2>Tech Stack</h2>
+          <ul class="tech-list">
+            {project.techStack.map((t) => <li class="tech-tag">{t}</li>)}
+          </ul>
+        </section>
+      )}
+
+      {project.liveUrl && (
+        <section class="project-section">
+          <h2>Links</h2>
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Live Demo →
+          </a>
+        </section>
+      )}
+
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .project-page {
+    padding: 4rem 0 6rem;
+    min-height: 80vh;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: 2.5rem;
+    transition: gap 0.2s;
+  }
+
+  .back-link:hover {
+    gap: 0.6rem;
+  }
+
+  .project-header {
+    margin-bottom: 2rem;
+  }
+
+  .project-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .category-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .category-tag {
+    background-color: var(--color-accent);
+    color: var(--color-btn-text);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.85rem;
+    border-radius: 99px;
+  }
+
+  .project-hero-image {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    border: 1px solid var(--color-border);
+  }
+
+  .project-hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-section {
+    margin-bottom: 3rem;
+  }
+
+  .project-section h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .project-section p {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 760px;
+  }
+
+  .feature-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 760px;
+  }
+
+  .feature-list li {
+    font-size: 0.97rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .feature-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .tech-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.35rem 0.9rem;
+    border-radius: 6px;
+  }
+</style>

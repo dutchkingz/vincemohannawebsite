@@ -26,16 +26,23 @@ import { projects } from '../../data/projects';
                 ))}
               </ul>
             </div>
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-              >
-                <span data-i18n="projects.view_link">View Project</span> →
-              </a>
-            )}
+            <div class="project-links">
+              {project.slug && (
+                <a href={`/projects/${project.slug}`} class="project-link">
+                  Learn More →
+                </a>
+              )}
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link project-link-external"
+                >
+                  <span data-i18n="projects.view_link">Live Demo</span> ↗
+                </a>
+              )}
+            </div>
           </li>
         ))
       }
@@ -123,6 +130,12 @@ import { projects } from '../../data/projects';
     border-radius: 99px;
   }
 
+  .project-links {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
   .project-link {
     font-size: 0.9rem;
     font-weight: 600;
@@ -135,5 +148,13 @@ import { projects } from '../../data/projects';
 
   .project-link:hover {
     gap: 0.5rem;
+  }
+
+  .project-link-external {
+    color: var(--color-text-secondary);
+  }
+
+  .project-link-external:hover {
+    color: var(--color-accent);
   }
 </style>
