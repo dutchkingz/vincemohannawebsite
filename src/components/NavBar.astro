@@ -8,7 +8,9 @@ import { en } from '../i18n/en';
 <header>
   <nav class="container">
     <!-- Left: Name / Logo -->
-    <a href="/" class="nav-name" data-i18n="nav.home">{en.nav.home}</a>
+    <a href="/" class="nav-logo">
+      <img src="/images/vm_logo_trans.png" alt="Vince Mohanna" class="nav-logo-img" />
+    </a>
 
     <!-- Center: Navigation links -->
     <ul class="nav-links" role="list">
@@ -67,6 +69,8 @@ import { en } from '../i18n/en';
     top: 0;
     z-index: 100;
     background-color: var(--color-nav-bg);
+    background-image: url('/images/background_tiles_nav.png');
+    background-repeat: repeat;
     color: var(--color-nav-text);
     box-shadow: var(--shadow-nav);
   }
@@ -79,13 +83,16 @@ import { en } from '../i18n/en';
     gap: 1rem;
   }
 
-  .nav-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--color-nav-text);
-    letter-spacing: 0.02em;
-    white-space: nowrap;
+  .nav-logo {
+    display: flex;
+    align-items: center;
     flex-shrink: 0;
+  }
+
+  .nav-logo-img {
+    height: 2.75rem;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav-links {
@@ -98,7 +105,7 @@ import { en } from '../i18n/en';
   .nav-links a {
     color: rgba(255, 255, 255, 0.85);
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 700;
     transition: color 0.2s;
     white-space: nowrap;
   }

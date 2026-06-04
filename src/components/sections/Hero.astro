@@ -5,6 +5,10 @@ import { en } from '../../i18n/en';
 
 <section class="hero" id="home">
   <div class="container hero-content">
+    <p class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      AI Engineer &amp; FinTech Specialist
+    </p>
     <h1 class="hero-name">{en.hero.name}</h1>
     <p class="hero-title" data-i18n="hero.title">{en.hero.title}</p>
     <p class="hero-tagline" data-i18n="hero.tagline">
@@ -24,55 +28,80 @@ import { en } from '../../i18n/en';
 
 <style>
   .hero {
-    background: linear-gradient(
-      135deg,
-      var(--color-nav-bg) 0%,
-      #253d6e 60%,
-      #1a3060 100%
-    );
     color: #fff;
     padding: 8rem 0 6rem;
     position: relative;
     overflow: hidden;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
   }
 
+  /* Layer 1: circuit board image */
   .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -20%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(201, 168, 76, 0.12) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
+    inset: 0;
+    background-image: url('/images/circuit_board.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+
+  /* Layer 2: dark overlay so text stays readable */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.72);
+    z-index: 1;
   }
 
   .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .eyebrow-line {
+    display: inline-block;
+    width: 2rem;
+    height: 2px;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
   }
 
   .hero-name {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3rem);
     color: #fff;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
+    margin-bottom: 0.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap;
   }
 
   .hero-title {
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-size: clamp(0.95rem, 1.8vw, 1.15rem);
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
     margin-bottom: 1.25rem;
   }
 
   .hero-tagline {
-    font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
     max-width: 560px;
     margin-bottom: 2.5rem;
     line-height: 1.7;
@@ -85,13 +114,19 @@ import { en } from '../../i18n/en';
   }
 
   .btn-outline {
-    border-color: rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.5);
     color: #fff;
   }
 
   .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: rgba(255, 255, 255, 0.1);
     border-color: #fff;
     color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .hero-name {
+      white-space: normal;
+    }
   }
 </style>

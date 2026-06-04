@@ -1,6 +1,26 @@
 /* src/styles/themes.css */
-/* Light theme (default) */
+/* Dark theme — Design B (default) */
 :root,
+[data-theme='dark'] {
+  --color-bg: #0f172a;
+  --color-bg-secondary: #0c1a2e;
+  --color-bg-card: #1e293b;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-nav-bg: #0f172a;
+  --color-nav-text: #f1f5f9;
+  --color-accent: #38bdf8;
+  --color-accent-hover: #7dd3fc;
+  --color-border: #334155;
+  --color-btn-bg: #38bdf8;
+  --color-btn-text: #0f172a;
+  --color-btn-hover: #7dd3fc;
+  --color-timeline-line: #334155;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Light theme (alternative) */
 [data-theme='light'] {
   --color-bg: #ffffff;
   --color-bg-secondary: #f5f7fa;
@@ -9,33 +29,13 @@
   --color-text-secondary: #4a5568;
   --color-nav-bg: #1b2a4a;
   --color-nav-text: #ffffff;
-  --color-accent: #c9a84c;
-  --color-accent-hover: #b8963f;
+  --color-accent: #0284c7;
+  --color-accent-hover: #0369a1;
   --color-border: #e2e8f0;
-  --color-btn-bg: #1b2a4a;
+  --color-btn-bg: #0284c7;
   --color-btn-text: #ffffff;
-  --color-btn-hover: #253d6e;
+  --color-btn-hover: #0369a1;
   --color-timeline-line: #e2e8f0;
   --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark theme */
-[data-theme='dark'] {
-  --color-bg: #0f1923;
-  --color-bg-secondary: #1a2535;
-  --color-bg-card: #1a2535;
-  --color-text-primary: #e8edf3;
-  --color-text-secondary: #a0aec0;
-  --color-nav-bg: #0a1520;
-  --color-nav-text: #ffffff;
-  --color-accent: #d4af5a;
-  --color-accent-hover: #e0c070;
-  --color-border: #2d3748;
-  --color-btn-bg: #2d4070;
-  --color-btn-text: #ffffff;
-  --color-btn-hover: #3a5090;
-  --color-timeline-line: #2d3748;
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-nav: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
