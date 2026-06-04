@@ -8,6 +8,7 @@ export interface Institution {
   logoAlt: string;
   badge?: string;
   badgeAlt?: string;
+  url?: string;
 }
 
 export const institutions: Institution[] = [
@@ -20,6 +21,7 @@ export const institutions: Institution[] = [
     logoAlt: 'McGill University',
     badge: '/images/mcgill_university.svg',
     badgeAlt: 'McGill University crest',
+    url: 'https://www.mcgill.ca/',
   },
   {
     name: 'Toronto Metropolitan University',
@@ -30,6 +32,7 @@ export const institutions: Institution[] = [
     logoAlt: 'Toronto Metropolitan University',
     badge: '/images/toronto_met_seal.webp',
     badgeAlt: 'Toronto Metropolitan University seal',
+    url: 'https://www.torontomu.ca/',
   },
   {
     name: 'Lund University',
@@ -40,5 +43,6 @@ export const institutions: Institution[] = [
     logoAlt: 'Lund University',
     badge: '/images/lunds_universitet_logo.png',
     badgeAlt: 'Lund University logo',
+    url: 'https://www.lunduniversity.lu.se/',
   },
 ];

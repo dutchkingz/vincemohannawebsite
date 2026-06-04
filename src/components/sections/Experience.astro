@@ -29,8 +29,11 @@ import { roles } from '../../data/experience';
                   <span class="timeline-location">{role.location}</span>
                 </div>
               </div>
-              <ul class="timeline-bullets">
+              <ul class="timeline-bullets" data-lang-block="en">
                 {role.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+              <ul class="timeline-bullets" data-lang-block="fr">
+                {(role.bullets_fr ?? role.bullets).map((b) => <li>{b}</li>)}
               </ul>
             </div>
           </li>
@@ -127,10 +130,11 @@ import { roles } from '../../data/experience';
 
   .timeline-bullets {
     font-size: 0.95rem;
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     line-height: 1.7;
     padding-left: 1.25rem;
     margin: 0;
+    list-style-type: disc;
   }
 
   .timeline-bullets li {
@@ -140,6 +144,10 @@ import { roles } from '../../data/experience';
   .timeline-bullets li:last-child {
     margin-bottom: 0;
   }
+
+  [data-lang-block="fr"] { display: none; }
+  :global(html[data-lang="fr"]) [data-lang-block="en"] { display: none; }
+  :global(html[data-lang="fr"]) [data-lang-block="fr"] { display: block; }
 
   @media (max-width: 600px) {
     .timeline-header {

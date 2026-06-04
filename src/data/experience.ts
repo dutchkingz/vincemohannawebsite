@@ -6,6 +6,7 @@ export interface Role {
   startDate: string;
   endDate: string;
   bullets: string[];
+  bullets_fr?: string[];
 }
 
 export const roles: Role[] = [
@@ -22,6 +23,13 @@ export const roles: Role[] = [
       'Managing critical data streams and scheduling with Autosys jobs',
       'Investigating ongoing production issues with ServiceNow and JIRA tracking tool for software issues',
     ],
+    bullets_fr: [
+      "Prise en charge du flux de processus du cycle de négociation des opérations de courtage principal à l'échelle mondiale sur des fermes de serveurs Linux et Windows",
+      "Contruire des scripts SQL et BASH shell pour garantir la continuité et la qualité des données afin d'assurer leur cohérence",
+      "Utilisation d'outils internes pour surveiller les rapports et les flux de transactions pour le règlement des produits dérivés cotés sur les plateformes Morgan Stanley",
+      "Gestion des flux de données critiques et planification avec les tâches Autosys",
+      "Analyse des problèmes de production en cours avec ServiceNow et JIRA pour assurer le suivi de résolution de problèmes",
+    ],
   },
   {
     company: 'Koios Intelligence',
@@ -34,6 +42,12 @@ export const roles: Role[] = [
       'Data engineering and integrating insurance based data into LLMs',
       'LLM tuning, querying and evaluation using SAS and Matlab statistics and machine learning',
       'Software testing on the front end of Prompting application',
+    ],
+    bullets_fr: [
+      "Usage de Keras et TensorFlow pour l’entraînement de modèles d’IA pour les applications de chatbot",
+      "Ingénierie des données et intégration de données d’assurance dans les modèles linéaires logiques",
+      "Optimisation, interrogation et évaluation des modèles linéaires logiques à l’aide de SAS et Matlab (statistiques et apprentissage automatique)",
+      "Tests logiciels de l’interface utilisateur d’une application de saisie intuitive",
     ],
   },
   {
@@ -52,6 +66,16 @@ export const roles: Role[] = [
       'Sailpoint and ServiceNow used in tiered software and IT service requests',
       'JIRA tracking tool for ongoing software issues',
     ],
+    bullets_fr: [
+      "Support des Plateformes logicielles financières à grande échelle déployées mondialement sur des fermes de serveurs Linux et Windows",
+      "Supervision logicielle basée sur les données avec Geneos et Splunk pour les processus critiques",
+      "Gestion des flux de données critiques pour les applications en temps réel avec ION",
+      "Automatisation et planification des automations logicielles avec Autosys",
+      "Support et formation des traders et des développeurs",
+      "Scripts SQL Server et scripts shell Linux",
+      "Gestion de Sailpoint et ServiceNow dans le triage des demandes de services logiciels et informatiques",
+      "Outil de suivi JIRA pour les problèmes logiciels en cours",
+    ],
   },
   {
     company: 'CSIO',
@@ -67,6 +91,14 @@ export const roles: Role[] = [
       'Ensure high quality technical support of Azure cloud-based software',
       'Consulting on data standards in XML and AL3 for insurance industry',
     ],
+    bullets_fr: [
+      "Analyse et mise en oeuvre de l’automatisation logicielle",
+      "Intégration logicielle avec Node.js, PHP et VBA",
+      "Analyse technologique pour l’intégration et l’automatisation des flux de travail",
+      "Gestion de contenu web avec Drupal, HTML, CSS et PHP",
+      "Gestion de support technique de haute qualité pour les logiciels cloud Azure",
+      "Conseil sur les normes de données XML et AL3 pour le secteur de l’assurance",
+    ],
   },
   {
     company: 'TD Wealth',
@@ -79,6 +111,11 @@ export const roles: Role[] = [
       'Fulfill registered plan transactions',
       'Provide market information and investing knowledge',
     ],
+    bullets_fr: [
+      "Fournir des services de courtage aux clients de TD Gestion de patrimoine",
+      "Exécuter les opérations des régimes enregistrés",
+      "Fournir des renseignements sur les marchés et des connaissances en matière d’investissement",
+    ],
   },
   {
     company: 'Fiera Capital Corporation',
@@ -90,6 +127,11 @@ export const roles: Role[] = [
       'Preparation of financial statements and earnings',
       'Invoicing and accounts payable for fund management',
       'Automating internal processes with Excel Macro programming',
+    ],
+    bullets_fr: [
+      "Préparation des états financiers et des résultats trimestriels et annuels",
+      "Facturation et comptes fournisseurs pour la gestion de fonds",
+      "Automatisation des processus internes en programmation de macros Excel",
     ],
   },
   {
@@ -106,6 +148,14 @@ export const roles: Role[] = [
       'SQL Server maintenance and data migration',
       'Python programming for natural language processing (NLP)',
     ],
+    bullets_fr: [
+      "Expertise en reconnaissance vocale logicielle",
+      "Ingénierie logicielle, tests et vérification de produits",
+      "Création d’applications de test et de vérification en C#",
+      "Création d’applications statistiques en VBA et Excel",
+      "Maintenance de SQL Server et migration de données",
+      "Programmation Python pour le traitement automatique du langage naturel (Python NLTK)",
+    ],
   },
   {
     company: 'Anticyclone',
@@ -119,6 +169,13 @@ export const roles: Role[] = [
       'SQL Server maintenance of production sites',
       'Provide end-user training for medical staff',
       'Product demonstrations at industry trade shows in France',
+    ],
+    bullets_fr: [
+      "Expertise en reconnaissance vocale logicielle",
+      "Ingénierie logicielle, tests, documentation et dépannage",
+      "Maintenance des serveurs SQL en production",
+      "Formation des utilisateurs en T.I et pour le personnel médical",
+      "Démonstrations de produits lors de salons professionnels en France",
     ],
   },
   {
@@ -134,6 +191,13 @@ export const roles: Role[] = [
       'Demonstrate speech recognition technology products at industry trade shows across Europe',
       'Product training for partner companies and hospital IT staff',
     ],
+    bullets_fr: [
+      "Fournir une expertise et un soutien techniques aux entreprises partenaires mettant en oeuvre des solutions logicielles à reconnaissance vocale",
+      "Développer et entretenir des relations clients avec les développeurs de logiciels",
+      "Tests logiciels, débogage et suivi des anomalies",
+      "Présenter les produits de reconnaissance vocale lors de salons professionnels en Europe",
+      "Former les entreprises partenaires et le personnel informatique hospitalier",
+    ],
   },
   {
     company: 'Philips Semiconductors — Philips Research Laboratories',
@@ -143,6 +207,9 @@ export const roles: Role[] = [
     endDate: '2006',
     bullets: [
       "Completed a Master's research project on application parallelization and real-time systems for a heterogeneous multiprocessor radio chip intended for the automobile industry, as part of a research group focusing on predictable multiprocessors within the Embedded Systems Architecture on Silicon group",
+    ],
+    bullets_fr: [
+      "Réalisation d’un projet de recherche de master portant sur la parallélisation d’applications et les systèmes temps réel pour une puce radio multiprocesseur hétérogène destinée à l’industrie automobile, au sein d’un groupe de recherche spécialisé dans les multiprocesseurs prévisibles au sein du groupe Architecture des systèmes embarqués ASIC",
     ],
   },
 ];

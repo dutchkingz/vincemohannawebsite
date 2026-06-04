@@ -14,16 +14,16 @@ export const fr: Translations = {
   hero: {
     greeting: 'Bonjour, je suis',
     name: 'Vince Mohanna',
-    title: 'Votre titre professionnel ici',
-    tagline: 'Une accroche brève et convaincante sur votre expertise et ce qui vous motive.',
+    title: 'Ingénieur informatique, développeur full-stack et ingénieur en intelligence artificielle, spécialiste en FinTech',
+    tagline: "Ingénieur logiciel en IA, je développe des applications complètes pilotées par l'IA. Expert en intégration de flux de données complexes et en solutions modernes.",
     cta_cv: 'Voir le CV',
     cta_contact: 'Me contacter',
   },
   about: {
     heading: 'À propos de moi',
-    bio_1: 'Remplacez ce paragraphe par votre biographie réelle. Racontez votre parcours — votre background, votre spécialité, et le type de problèmes que vous aimez résoudre.',
-    bio_2: 'Un deuxième paragraphe sur votre expérience, vos valeurs ou ce qui vous distingue professionnellement.',
-    bio_3: "",
+    bio_1: "Ingénieur polyvalent, titulaire d'un Master en Systèmes Embarqués et fort de plus de 15 ans d'expérience dans divers secteurs, notamment la finance, la santé, l'assurance et les startups en IA.",
+    bio_2: "Grâce à de solides compétences en finance et une compréhension approfondie des instruments financiers, je suis capable d'appréhender la complexité des marchés financiers mondiaux. Mon expertise couvre différentes classes d'actifs, dont les actions, les obligations, les produits dérivés et le change, me permettant d'analyser et d'interpréter efficacement la dynamique des marchés. Je possède une connaissance approfondie des stratégies de trading, de la gestion de portefeuille, de l'évaluation des risques et des méthodes de valorisation, autant d'éléments essentiels à une prise de décision éclairée dans des environnements financiers à forts enjeux.",
+    bio_3: "Outre mon expertise financière, je possède une solide expérience en fintech, où je me concentre sur l'exploitation des technologies pour améliorer les applications de trading et optimiser les processus financiers. En combinant compétences techniques et expertise financière, je contribue au développement et à la mise en œuvre de systèmes de trading sophistiqués qui améliorent l'efficience des marchés, la liquidité et stimulent l'innovation. Que ce soit par le biais de solutions de trading algorithmique, d'analyse de données ou de l'intégration de la technologie blockchain, je m'engage à développer les capacités des plateformes fintech pour répondre aux exigences évolutives des marchés financiers modernes.",
   },
   education: {
     heading: 'Formation',

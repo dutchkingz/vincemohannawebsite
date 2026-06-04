@@ -20,7 +20,13 @@ const sorted = [...institutions].sort((a, b) => {
               <img src={inst.logo} alt={inst.logoAlt} class="edu-logo" />
             </div>
             <div class="edu-info">
-              <h3 class="edu-name">{inst.name}</h3>
+              <h3 class="edu-name">
+                {inst.url ? (
+                  <a href={inst.url} target="_blank" rel="noopener noreferrer">{inst.name}</a>
+                ) : (
+                  inst.name
+                )}
+              </h3>
               <p class="edu-degree">
                 {inst.degree} · {inst.field}
               </p>
