@@ -1,6 +1,7 @@
 // src/i18n/en.ts
 export const en = {
   nav: {
+    home: 'Home',
     about: 'About',
     education: 'Education',
     experience: 'Experience',

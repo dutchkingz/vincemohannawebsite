@@ -3,6 +3,7 @@ import type { Translations } from './en';
 
 export const fr: Translations = {
   nav: {
+    home: 'Accueil',
     about: 'À propos',
     education: 'Formation',
     experience: 'Expérience',
