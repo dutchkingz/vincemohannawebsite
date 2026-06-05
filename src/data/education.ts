@@ -8,6 +8,7 @@ export interface Institution {
   logoAlt: string;
   badge?: string;
   badgeAlt?: string;
+  badgeScale?: number;
   url?: string;
 }
 
@@ -32,6 +33,7 @@ export const institutions: Institution[] = [
     logoAlt: 'Toronto Metropolitan University',
     badge: '/images/toronto_met_seal.webp',
     badgeAlt: 'Toronto Metropolitan University seal',
+    badgeScale: 1.3,
     url: 'https://www.torontomu.ca/',
   },
   {
@@ -41,7 +43,7 @@ export const institutions: Institution[] = [
     years: '2005 – 2007',
     logo: '/images/Lunds_Universitet.jpg',
     logoAlt: 'Lund University',
-    badge: '/images/lunds_universitet_logo.png',
+    badge: '/images/lunds_universitet_whitebg.png',
     badgeAlt: 'Lund University logo',
     url: 'https://www.lunduniversity.lu.se/',
   },

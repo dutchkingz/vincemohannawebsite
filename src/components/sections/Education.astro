@@ -34,7 +34,7 @@ const sorted = [...institutions].sort((a, b) => {
             </div>
             {inst.badge && (
               <div class="edu-badge-wrap">
-                <img src={inst.badge} alt={inst.badgeAlt ?? inst.name} class="edu-badge" />
+                <img src={inst.badge} alt={inst.badgeAlt ?? inst.name} class="edu-badge" style={inst.badgeScale ? `transform: scale(${inst.badgeScale})` : undefined} />
               </div>
             )}
           </li>
@@ -114,13 +114,15 @@ const sorted = [...institutions].sort((a, b) => {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #ffffff;
   }
 
   .edu-badge {
     width: 80px;
     height: 80px;
     object-fit: contain;
-    border-radius: 6px;
   }
 
   @media (max-width: 600px) {
