@@ -17,6 +17,7 @@ export const fr: Translations = {
     name: 'Vince Mohanna',
     title: 'Ingénieur informatique, développeur full-stack et ingénieur en intelligence artificielle, spécialiste en FinTech',
     tagline: "Ingénieur logiciel en IA, je développe des applications complètes pilotées par l'IA. Expert en intégration de flux de données complexes et en solutions modernes.",
+    eyebrow: 'Ingénieur IA & Spécialiste FinTech',
     cta_cv: 'Voir le CV',
     cta_contact: 'Me contacter',
   },

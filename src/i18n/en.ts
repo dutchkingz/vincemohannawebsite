@@ -15,6 +15,7 @@ export const en = {
     name: 'Vince Mohanna',
     title: 'Computer Engineer, Full-Stack Developer & AI Engineer, FinTech Specialist',
     tagline: "AI Software Engineer building end-to-end AI-driven applications. Expert in bridging the gap between complex data streams and modern integrations.",
+    eyebrow: 'AI Engineer & FinTech Specialist',
     cta_cv: 'View CV',
     cta_contact: 'Contact Me',
   },
